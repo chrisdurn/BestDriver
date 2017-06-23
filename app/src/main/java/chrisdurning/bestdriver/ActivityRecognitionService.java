@@ -216,4 +216,3 @@ public class ActivityRecognitionService extends Service implements
         }
     }
 }
-//
