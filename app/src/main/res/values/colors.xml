@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="bg_login">#26ae90</color>
+    <color name="bg_register">#2e3237</color>
+    <color name="bg_main">#428bca</color>
+    <color name="white">#ffffff</color>
+    <color name="input_login">#222222</color>
+    <color name="input_login_hint">#999999</color>
+    <color name="input_register">#888888</color>
+    <color name="input_register_bg">#3b4148</color>
+    <color name="input_register_hint">#5e6266</color>
+    <color name="btn_login">#26ae90</color>
+    <color name="btn_login_bg">#eceef1</color>
+    <color name="lbl_name">#333333</color>
+    <color name="btn_logut_bg">#ff6861</color>
+    
+    <color name="greenish">#DCEDC8</color>
+    <color name="teal">#B2DFDB</color>
+    <color name="yellow">#FF5722</color>
+    <color name="black">#000000</color>
+
+    <color name="background">#FFFFFF</color>
+    <color name="realyellow">#FF9800</color>
+
+    <color name="airblue">#73D8ED</color>
+    <color name="airblue2">#74e7ee</color>
+    <color name="deepSkyBlue">#00bfff</color>
+    <color name="aqua">#00bfff</color>
+
+
+    <color name="orangeRed">#ff4500</color>
+    <color name="blueish">#00bbff</color>
+
+    <color name="red">#F44336</color>
+    <color name="green">#4CAF50</color>
+
+
+    <color name="lightGreen">#8BC34A</color>
+    <color name="anotherGreen">#69F0AE</color>
+
+    <color name="amber">#FFC107</color>
+    <color name="deepOrange">#FF5722</color>
+    <color name="TTeal">#A7FFEB</color>
+    <color name="Navy">#000080</color>
+
+    <color name="Silver">#C0C0C0</color>
+    <color name="lightGray">#D3D3D3</color>
+    <color name="darkGray">#A9A9A9</color>
+    <color name="gray">#808080</color>
+
+    <color name="Gold">#FFDF00</color>
+    <color name="vegasGold">#C5B358</color>
+    <color name="oldGold">#CFB53B</color>
+    <color name="metallicGold">#D4AF37</color>
+
+    <color name="yellowStench">#FFD700</color>
+    <color name="observatoryGreen">#00886B</color>
+    <color name="metal">#D4BF7B</color>
+    <color name="metallicSilver">#BCC6CC</color>
+
+
+</resources>

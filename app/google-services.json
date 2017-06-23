@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "750692969863",
+    "firebase_url": "https://best-driver-6ae04.firebaseio.com",
+    "project_id": "best-driver-6ae04",
+    "storage_bucket": "best-driver-6ae04.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:750692969863:android:1c4237660663ff7a",
+        "android_client_info": {
+          "package_name": "chrisdurning.bestdriver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "750692969863-k8dj5u085nelrfjgee09391usv764jm3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBX3iynnzoFoXI_S8RTmMTZBnEBWFHgaAo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

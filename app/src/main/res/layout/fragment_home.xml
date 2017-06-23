@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/observatoryGreen"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    tools:context="chrisdurning.bestdriver.HomeFragment">
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/enable_safe_driving_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        fancy:fb_borderColor="@color/yellowStench"
+        fancy:fb_borderWidth="1dp"
+        fancy:fb_defaultColor="@color/yellowStench"
+        fancy:fb_focusColor="@color/white"
+        fancy:fb_iconPosition="left"
+        fancy:fb_radius="30dp"
+        fancy:fb_text="Enable Safe Driving Prompt"
+        fancy:fb_textColor="@color/observatoryGreen"
+        android:layout_below="@+id/car_icon"
+        android:layout_centerHorizontal="true" />
+
+
+    <ImageButton
+        android:id="@+id/settings_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_action_gear" />
+
+    <ImageView
+        android:id="@+id/car_icon"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@drawable/large_yellow"
+        android:layout_below="@+id/switch_button"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:id="@+id/metric_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:textColor="@color/white"
+        android:text="Driving Metrics:"
+        android:layout_below="@+id/enable_safe_driving_prompt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="6dp" />
+
+    <RelativeLayout
+        android:id="@+id/driving_metrics_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:background="@drawable/border"
+        android:layout_below="@+id/metric_header"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/user_avg_speed_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/observatoryGreen"
+            android:text="Average Speed: 0 mph"
+            android:textSize="16sp"
+            android:layout_centerHorizontal="true" />
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/clear_average_speed_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            fancy:fb_borderColor="@color/observatoryGreen"
+            fancy:fb_borderWidth="1dp"
+            fancy:fb_defaultColor="@color/white"
+            fancy:fb_focusColor="@color/blueish"
+            fancy:fb_iconPosition="left"
+            fancy:fb_radius="30dp"
+            fancy:fb_text="Clear"
+            fancy:fb_textColor="@color/observatoryGreen"
+            android:layout_marginTop="11dp"
+            android:layout_below="@+id/user_avg_speed_textview"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/user_distance_travelled_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Distance Travelled: 0 miles"
+            android:textSize="16sp"
+            android:textColor="@color/observatoryGreen"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/clear_average_speed_button"
+            android:layout_centerHorizontal="true"/>
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/clear_distance_travelled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            fancy:fb_borderColor="@color/observatoryGreen"
+            fancy:fb_borderWidth="1dp"
+            fancy:fb_defaultColor="@color/white"
+            fancy:fb_focusColor="@color/blueish"
+            fancy:fb_iconPosition="left"
+            fancy:fb_radius="30dp"
+            fancy:fb_text="Clear"
+            fancy:fb_textColor="@color/observatoryGreen"
+            android:layout_marginTop="11dp"
+            android:layout_below="@+id/user_distance_travelled_textview"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:textColor="@color/metallicSilver"
+        android:text="@string/Notice"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>
