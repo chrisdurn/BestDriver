@@ -175,8 +175,6 @@ public class ActivityRecognitionService extends Service implements
         }
     }
 
-
-
     /**
      * Receiver for intents sent by DetectedActivitiesIntentService via a sendBroadcast().
      * Receives a list of one or more DetectedActivity objects associated with the current state of
@@ -213,7 +211,9 @@ public class ActivityRecognitionService extends Service implements
                                 Toast.LENGTH_LONG).show();
                     }
                 }
+
             }
         }
     }
 }
+//
