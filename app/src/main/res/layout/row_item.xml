@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:id="@+id/single_row"
     android:background="@color/yellowStench"
     android:layout_height="wrap_content"
     android:padding="15dip">
@@ -16,13 +17,30 @@
 
 
     <TextView
-        android:id="@+id/some_text"
+        android:id="@+id/numbers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/supressed_info_type"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textColor="@color/white"
         android:paddingLeft="5dp"
-        android:layout_centerVertical="true"/>
+        />
+
+    <TextView
+        android:id="@+id/messages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:layout_toEndOf="@+id/supressed_info_type"
+        android:layout_below="@+id/numbers"
+        />
+
+    <TextView
+        android:id="@+id/times"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+       />
+
 
 </RelativeLayout>

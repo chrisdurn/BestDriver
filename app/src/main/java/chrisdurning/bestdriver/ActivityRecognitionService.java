@@ -175,6 +175,12 @@ public class ActivityRecognitionService extends Service implements
         }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG, "onCreate() , service stopped...");
+    }
+
     /**
      * Receiver for intents sent by DetectedActivitiesIntentService via a sendBroadcast().
      * Receives a list of one or more DetectedActivity objects associated with the current state of
@@ -201,7 +207,7 @@ public class ActivityRecognitionService extends Service implements
                 int confidence = detectedActivitiesMap.containsKey(Constants.MONITORED_ACTIVITIES[i]) ?
                         detectedActivitiesMap.get(Constants.MONITORED_ACTIVITIES[i]) : 0;
 
-                if(i == 0 & confidence > 60) {
+                if(i == 0 & confidence > 50 & Utility.getBooleanFromPreferences(getApplicationContext(),"passenger")) {
                     if(hasRun) {
                         Intent dialogIntent = new Intent(ActivityRecognitionService.this, SafeDrivePrompt.class);
                         dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -211,7 +217,6 @@ public class ActivityRecognitionService extends Service implements
                                 Toast.LENGTH_LONG).show();
                     }
                 }
-
             }
         }
     }

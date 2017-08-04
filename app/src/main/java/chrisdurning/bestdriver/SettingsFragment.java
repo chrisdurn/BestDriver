@@ -1,6 +1,7 @@
 package chrisdurning.bestdriver;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -45,10 +46,12 @@ public class SettingsFragment extends Fragment implements OnBackPressedListener{
                     case miles_button:
                         // Pirates are the best
                         mileButton.setChecked(true);
+                        Utility.putBooleanInPreferences(getActivity().getApplicationContext(), true, "miles");
                         break;
                     case R.id.kilos_button:
                         // Ninjas rule
                         kiloButton.setChecked(true);
+                        Utility.putBooleanInPreferences(getActivity().getApplicationContext(), false, "miles");
                         break;
                 }
             }
@@ -62,6 +65,12 @@ public class SettingsFragment extends Fragment implements OnBackPressedListener{
             @Override
             public void onCheckedChanged(SwitchButton view, boolean isChecked) {
                 check = isChecked;
+                if(check) {
+                    Utility.putBooleanInPreferences(getActivity().getApplicationContext(), false, "passenger");
+                } else {
+                    Utility.putBooleanInPreferences(getActivity().getApplicationContext(), true, "passenger");
+                }
+
             }
         });
     }

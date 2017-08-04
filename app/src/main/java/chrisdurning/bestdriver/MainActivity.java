@@ -28,15 +28,6 @@ public class MainActivity extends Activity implements HomeFragment.HomeFragmentC
         edit.putBoolean("prompt", true);
         edit.apply();
 
-        // add this to broadcast receiver class
-        ContentResolver resolver = getContentResolver();
-        Cursor cursor  = resolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
-
-        while(cursor.moveToNext()) {
-            String name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-            Log.i("*******", name);
-        }
-
         mHomeFragment = new HomeFragment();
         mSettingsFragment = new SettingsFragment();
 

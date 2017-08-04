@@ -19,10 +19,20 @@ public class TermsAndConditionsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // make sure all suppressed data is removed
+        Utility.removeStringFromSharedPreferences(getApplicationContext(),"callTimesReceived");
+        Utility.removeStringFromSharedPreferences(getApplicationContext(),"smsTimesReceived");
+        Utility.removeStringFromSharedPreferences(getApplicationContext(),"smsNumbers");
+        Utility.removeStringFromSharedPreferences(getApplicationContext(),"smsMessages");
+        Utility.removeStringFromSharedPreferences(getApplicationContext(),"numbers");
+
         Log.i("Terms&Conds", "onCreate - RecogServiceStarted");
         startService(new Intent(this, ActivityRecognitionService.class));
 
         mSettings = getSharedPreferences("pref", MODE_PRIVATE);
+
+        Utility.putBooleanInPreferences(getApplicationContext(), true, "passenger");
+        Utility.putBooleanInPreferences(getApplicationContext(), true, "miles");
 
         isTermsAccepted = mSettings.getBoolean("accept", false);
 
@@ -124,10 +134,7 @@ public class TermsAndConditionsActivity extends Activity {
 
             @Override
             public void onClick(View view) {
-                SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
-                SharedPreferences.Editor editor = pref.edit();
-                editor.putBoolean("accept", true);
-                editor.apply();
+                Utility.putBooleanInPreferences(getApplicationContext(),true,"pref");
                 termsAccepted();
             }
         });

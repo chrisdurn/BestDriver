@@ -1,6 +1,7 @@
 package chrisdurning.bestdriver;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,13 +17,17 @@ import java.util.List;
  */
 
 public class ListAdapter extends ArrayAdapter<String> {
+    private ArrayList<String> times;
+    private ArrayList<String> messages;
 
     public ListAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
     }
 
-    public ListAdapter(Context context, int resource, List<String> items) {
+    public ListAdapter(Context context, int resource, List<String> items, ArrayList<String> times, ArrayList<String> messages) {
         super(context, resource, items);
+        this.times = times;
+        this.messages = messages;
     }
 
     @Override
@@ -35,64 +41,35 @@ public class ListAdapter extends ArrayAdapter<String> {
             v = vi.inflate(R.layout.row_item, null);
         }
 
-        String p = getItem(position);
+        String number = getItem(position);
+        String time = times.get(position);
+        String message = messages.get(position);
 
-        if (p.equals("this is row 1")) {
-            TextView tt1 = (TextView) v.findViewById(R.id.some_text);
-            ImageView imageView = (ImageView) v.findViewById(R.id.supressed_info_type);
+        TextView numbersTextview = (TextView) v.findViewById(R.id.numbers);
+        TextView timeTextview = (TextView) v.findViewById(R.id.times);
+        TextView messageTextview = (TextView) v.findViewById(R.id.messages);
 
-            if (tt1 != null) {
-                tt1.setText(p);
-                imageView.setImageResource(R.drawable.messenger);
-            }
-        } else if(p.equals("this is row 2")){
-            TextView tt2 = (TextView) v.findViewById(R.id.some_text);
-            ImageView imageView = (ImageView) v.findViewById(R.id.supressed_info_type);
+        ImageView imageView = (ImageView) v.findViewById(R.id.supressed_info_type);
 
-            if (tt2 != null) {
-                tt2.setText(p);
-                imageView.setImageResource(R.drawable.snapchat_white);
-            }
+        //set image and message if not equal to "" set message
+        if(message.equals("")) {
+            imageView.setImageResource(R.drawable.phonecall);
+            messageTextview.setText(" ");
+        } else {
+            imageView.setImageResource(R.drawable.text);
+            messageTextview.setText(message);
+        }
 
-        } else if(p.equals("this is row 3")){
-            TextView tt2 = (TextView) v.findViewById(R.id.some_text);
-            ImageView imageView = (ImageView) v.findViewById(R.id.supressed_info_type);
+        //set number
+        if (numbersTextview != null) {
+            numbersTextview.setText(number);
+        }
 
-            if (tt2 != null) {
-                tt2.setText(p);
-                imageView.setImageResource(R.drawable.gmail);
-            }
-
-        } else if(p.equals("this is row 4")){
-            TextView tt2 = (TextView) v.findViewById(R.id.some_text);
-            ImageView imageView = (ImageView) v.findViewById(R.id.supressed_info_type);
-
-            if (tt2 != null) {
-                tt2.setText(p);
-                imageView.setImageResource(R.drawable.twitter);
-            }
-
-        } else if(p.equals("this is row 5")){
-            TextView tt2 = (TextView) v.findViewById(R.id.some_text);
-            ImageView imageView = (ImageView) v.findViewById(R.id.supressed_info_type);
-
-            if (tt2 != null) {
-                tt2.setText(p);
-                imageView.setImageResource(R.drawable.text);
-            }
-
-        } else if(p.equals("this is row 6")){
-            TextView tt2 = (TextView) v.findViewById(R.id.some_text);
-            ImageView imageView = (ImageView) v.findViewById(R.id.supressed_info_type);
-
-            if (tt2 != null) {
-                tt2.setText(p);
-                imageView.setImageResource(R.drawable.phonecall);
-            }
-
+        //set time
+        if(timeTextview != null) {
+            timeTextview.setText(time);
         }
 
         return v;
     }
-
 }
