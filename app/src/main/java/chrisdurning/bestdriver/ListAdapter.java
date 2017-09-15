@@ -1,7 +1,6 @@
 package chrisdurning.bestdriver;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +16,8 @@ import java.util.List;
  */
 
 public class ListAdapter extends ArrayAdapter<String> {
-    private ArrayList<String> times;
-    private ArrayList<String> messages;
+    private ArrayList<String> mTimes;
+    private ArrayList<String> mMessages;
 
     public ListAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
@@ -26,8 +25,8 @@ public class ListAdapter extends ArrayAdapter<String> {
 
     public ListAdapter(Context context, int resource, List<String> items, ArrayList<String> times, ArrayList<String> messages) {
         super(context, resource, items);
-        this.times = times;
-        this.messages = messages;
+        this.mTimes = times;
+        this.mMessages = messages;
     }
 
     @Override
@@ -42,8 +41,8 @@ public class ListAdapter extends ArrayAdapter<String> {
         }
 
         String number = getItem(position);
-        String time = times.get(position);
-        String message = messages.get(position);
+        String time = mTimes.get(position);
+        String message = mMessages.get(position);
 
         TextView numbersTextview = (TextView) v.findViewById(R.id.numbers);
         TextView timeTextview = (TextView) v.findViewById(R.id.times);
@@ -51,7 +50,7 @@ public class ListAdapter extends ArrayAdapter<String> {
 
         ImageView imageView = (ImageView) v.findViewById(R.id.supressed_info_type);
 
-        //set image and message if not equal to "" set message
+        //set image and message is message not equal ""
         if(message.equals("")) {
             imageView.setImageResource(R.drawable.phonecall);
             messageTextview.setText(" ");
@@ -72,4 +71,5 @@ public class ListAdapter extends ArrayAdapter<String> {
 
         return v;
     }
+
 }

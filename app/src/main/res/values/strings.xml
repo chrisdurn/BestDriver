@@ -22,7 +22,7 @@
     <string name="not_connected">GoogleApiClient not yet connected. Try again.</string>
     <string name="title_activity_main2">Main2Activity</string>
 
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">Home</string>
 
     <string name="Distance">DISTANCES:</string>
     <string name="Passenger">DISABLE ACTIVITY RECOGNITION:</string>
@@ -37,4 +37,8 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_safe_drive_prompt">SafeDrivePrompt</string>
     <string name="title_activity_supressed_summary">SupressedSummary</string>
+    <string name="title_activity_user_driving_points">UserDrivingPoints</string>
+    <string name="title_activity_incoming_call">IncomingCallActivity</string>
+
+    <string name="msg">Please enable all permission</string>
 </resources>

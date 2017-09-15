@@ -25,7 +25,6 @@ public class NumberReceiver extends BroadcastReceiver {
 
                 Utility.addStringToList(context, number, KEY1);
                 Utility.addStringToList(context, Utility.getCallTime(context), KEY2);
-
             }
         }
     }

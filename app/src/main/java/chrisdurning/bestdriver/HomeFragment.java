@@ -2,20 +2,33 @@ package chrisdurning.bestdriver;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
-import android.view.GestureDetector;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 
 
 public class HomeFragment extends Fragment {
     private HomeFragmentCommunicator mHomeFragmentCommunicator;
+    private float averageSpeed;
+    private float distance;
+    private TextView mAvgSpeedTextView;
+    private TextView mUserDistanceTextView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,9 +41,10 @@ public class HomeFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        Float averageSpeed = Utility.getFloatFromPreferences(getActivity().getApplicationContext(),
-                "speed");
-        int count = Utility.getIntFromPreferences(getActivity().getApplicationContext(),"count");
+
+        mAvgSpeedTextView = (TextView) getActivity().findViewById(R.id.user_avg_speed_textview);
+        mUserDistanceTextView = (TextView) getActivity().findViewById(R.id.user_distance_travelled_textview);
+
         mHomeFragmentCommunicator = (HomeFragmentCommunicator) getActivity();
 
         ImageButton settingsButton = (ImageButton) getActivity().findViewById(R.id.settings_button);
@@ -41,16 +55,15 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        TextView avgSpeedTextView = (TextView) getActivity().findViewById(R.id.user_avg_speed_textview);
-        TextView userDistanceTextView = (TextView) getActivity().findViewById(R.id.user_distance_travelled_textview);
 
-        if(Utility.getBooleanFromPreferences(getActivity().getApplicationContext(),"miles")) {
-            avgSpeedTextView.setText("Average Speed: 0 m/h");
-            userDistanceTextView.setText("Distance Travelled: 0 miles");
-        } else {
-            avgSpeedTextView.setText("Average Speed: 0 km/h");
-            userDistanceTextView.setText("Distance Travelled: 0 kilometers");
-        }
+        FancyButton yourScore = (FancyButton) getActivity().findViewById(R.id.your_score);
+        yourScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), UserDrivingPoints.class);
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -67,7 +80,10 @@ public class HomeFragment extends Fragment {
         clearAvgSpeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Utility.putFloatInPreferences(getActivity(),0.0f, "speed");
+                Utility.putIntInPreferences(getActivity(),0, "speedCount");
+                averageSpeed = 0.0f;
+                setSpeedAndDistance();
             }
         });
 
@@ -75,10 +91,49 @@ public class HomeFragment extends Fragment {
         clearDistanceTravelled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Utility.putFloatInPreferences(getActivity(),0.0f, "distance");
+                distance = 0.0f;
+                setSpeedAndDistance();
 
             }
         });
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if(Utility.getIntFromPreferences(getActivity(),"speedCount") == 0) {
+            averageSpeed = 0.0f;
+            distance = 0.0f;
+        } else {
+            averageSpeed = Utility.getFloatFromPreferences(getActivity(),"speed" ) /
+                    Utility.getIntFromPreferences(getActivity(),"speedCount");
+            distance = Utility.getFloatFromPreferences(getActivity(),"distance");
+        }
+
+        Log.i("Speed: ", "" + Utility.getFloatFromPreferences(getActivity(),"speed" ));
+        Log.i("SpeedCount: ", "" + Utility.getIntFromPreferences(getActivity(),"speedCount"));
+
+        Toast.makeText(getActivity(), "Speed: " + Utility.getFloatFromPreferences(getActivity(),"speed" ) + " Count: "
+                        + Utility.getIntFromPreferences(getActivity(),"speedCount"),
+                        Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "Distance: " + Utility.getFloatFromPreferences(getActivity(),"distance" ),
+                Toast.LENGTH_LONG).show();
+
+        setSpeedAndDistance();
+
+    }
+
+    public void setSpeedAndDistance() {
+        if(Utility.getBooleanFromPreferences(getActivity().getApplicationContext(),"miles")) {
+            mAvgSpeedTextView.setText("Average Speed: " + String.format("%.1f", averageSpeed * 2.23694) + " m/h");
+            mUserDistanceTextView.setText("Distance Travelled: " + String.format("%.1f", distance * 0.000621371) + " miles");
+        } else {
+            mAvgSpeedTextView.setText("Average Speed: " + String.format("%.1f", averageSpeed * 3.6) + " km/h");
+            mUserDistanceTextView.setText("Distance Travelled: " + String.format("%.1f", distance * 0.001) + " km");
+        }
     }
 
     interface HomeFragmentCommunicator {

@@ -1,11 +1,11 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="ThemeOverlay.AppCompat">
+    <style name="AppTheme">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/observatoryGreen</item>
+        <item name="colorPrimaryDark">@color/observatoryGreen</item>
+        <item name="colorAccent">@color/observatoryGreen</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

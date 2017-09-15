@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class TermsAndConditionsActivity extends Activity {
+public class TermsAndConditionsActivity extends AbsRuntimePermission {
+    private static final int REQUEST_PERMISSION = 10;
+
     private TextView mTerms;
     private Button mAcceptTerms;
     private SharedPreferences mSettings = null;
@@ -134,12 +137,31 @@ public class TermsAndConditionsActivity extends Activity {
 
             @Override
             public void onClick(View view) {
+
+                requestAppPermissions(new String[]{
+                                "android.permission.READ_CONTACTS",
+                                "android.permission.WRITE_EXTERNAL_STORAGE",
+                                "android.permission.WRITE_CONTACTS",
+                                "android.permission.ACCESS_FINE_LOCATION",
+                                "android.permission.ACCESS_COARSE_LOCATION",
+                                "android.permission.READ_PHONE_STATE",
+                                "android.permission.READ_SMS",
+                                "android.permission.RECEIVE_SMS"},
+                        R.string.msg,REQUEST_PERMISSION);
+
                 Utility.putBooleanInPreferences(getApplicationContext(),true,"pref");
                 termsAccepted();
+                Log.i("************", "onClick: ");
             }
         });
 
     }
+
+    @Override
+    public void onPermissionsGranted(int requestCode) {
+
+    }
+
 
     private void termsAccepted() {
         Intent intent = new Intent(TermsAndConditionsActivity.this, MainActivity.class);

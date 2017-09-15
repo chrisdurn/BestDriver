@@ -3,11 +3,13 @@ package chrisdurning.bestdriver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.telephony.SmsMessage;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * Created by chrisdurning on 25/06/2017.
@@ -22,6 +24,10 @@ public class SmsReceiver extends BroadcastReceiver {
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void onReceive(Context context, Intent intent) {
 
+        SmsMessage [] messages;
+        String message = "";
+        String phoneNumber = "";
+
         if(Utility.getBooleanFromPreferences(context, "safeDrivingPrompt")) {
             // Retrieves a map of extended data from the intent.
             final Bundle bundle = intent.getExtras();
@@ -31,26 +37,24 @@ public class SmsReceiver extends BroadcastReceiver {
                 if (bundle != null) {
 
                     final Object[] pdusObj = (Object[]) bundle.get("pdus");
-                    String format = bundle.getString("format");
-                    for (int i = 0; i < pdusObj.length; i++) {
+                    assert pdusObj != null;
+                    messages = new SmsMessage[pdusObj.length];
 
-                        SmsMessage currentMessage = SmsMessage.createFromPdu((byte[] ) pdusObj[i], format);
-                        String phoneNumber = currentMessage.getDisplayOriginatingAddress();
+                    for (int i = 0; i < messages.length; i++) {
+                        String format = bundle.getString("format");
+                        messages[i] = SmsMessage.createFromPdu((byte[]) pdusObj[i], format);
 
-                        // number
-                        String senderNum = phoneNumber;
-                        Utility.addStringToList(context, senderNum, KEY1);
-                        // message
-                        String message = currentMessage.getDisplayMessageBody();
-                        Utility.addStringToList(context, message, KEY2);
-                        // time
-                        Utility.addStringToList(context, Utility.getCallTime(context), KEY3);
+                        phoneNumber = messages[i].getDisplayOriginatingAddress();
+                        message += messages[i].getMessageBody();
 
                     }
+                    Utility.addStringToList(context, phoneNumber, KEY1);
+                    Utility.addStringToList(context, message, KEY2);
+                    Utility.addStringToList(context, Utility.getCallTime(context), KEY3);
                 }
 
-            } catch (Exception e) {
-                Log.e("SmsReceiver", "Exception smsReceiver" +e);
+            } catch (RuntimeException e) {
+                Log.e("SmsReceiver", e + " ");
 
             }
         }

@@ -72,7 +72,6 @@
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
             android:paddingTop="15dp"
-            fancy:fb_borderColor="@color/red"
             fancy:fb_borderWidth="1dp"
             fancy:fb_defaultColor="@color/red"
             fancy:fb_focusColor="@color/yellowStench"

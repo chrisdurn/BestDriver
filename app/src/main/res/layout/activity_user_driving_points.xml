@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="chrisdurning.bestdriver.UserDrivingPoints"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:background="@color/orangeRed">
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="160dp"
+        android:textSize="30dp"
+        android:text=""/>
+    
+    <TextView
+        android:id="@+id/score_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/header"
+        android:textSize="20dp"
+        android:text="Your Points:"/>
+
+    <TextView
+        android:id="@+id/score_int"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/score_header"
+        android:layout_marginTop="18dp"
+        android:textSize="20dp"
+        android:text="24"
+        />
+
+    <ImageView
+        android:id="@+id/balloon"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/ic_action_balloon"/>
+
+    <ImageView
+        android:id="@+id/red_balloon"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/ic_action_balloon"
+        android:layout_alignParentRight="true"/>
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/btn_spotify"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/score_int"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        fancy:fb_borderColor="#FFFFFF"
+        fancy:fb_borderWidth="1dp"
+        fancy:fb_defaultColor="@color/white"
+        fancy:fb_focusColor="#9bd823"
+        fancy:fb_radius="30dp"
+        fancy:fb_text="SHARE"
+        fancy:fb_textColor="@color/orangeRed" />
+
+</RelativeLayout>
